@@ -16,13 +16,17 @@ You play 100(+/-10) rounds in sequence, keeping any information you wish.  The w
 Using the grid above:
 
 Player 1: row 2
+
 Player 2: row 2
+
 Both players get 0 points.
 
 ------
 
 Player 1: row 1
+
 Player 2: row 0
+
 Player 1 gets 3 points, Player 2 gets 5 points.
 
 # Winning the KOTH
@@ -32,7 +36,7 @@ Each bot will play 10 games of ~100 rounds against each bot (including itself!).
 - **Score:** the total scores will be summed and the bot with the most points at the end will win.
 - **Wins:** a 'win' is counted for the bot with the highest score after the `n` rounds have been played.
 
-The overall winner will be determined by combining the two tables.
+The overall winner will be determined by combining the two tables.  A winner will be accepted about 1 week after the most recent entry, but I will probably continue to update the highscore table if new entries are added.
 
 # Technical details
 
@@ -83,15 +87,13 @@ def interpret(grid, moves, store):
 - Your function should be relatively quick to execute - the quicker it is, the better.
 - You *may* submit multiple entries.
 
-# Controller, sandbox, arena
+# Controller, arena
 
 **The controller is available at [https://github.com/Nucaranlaeg/KOTH-random-prisoner](https://github.com/Nucaranlaeg/KOTH-random-prisoner).**
 
 This controller is largely adapted from [https://github.com/jthistle/KOTH-counting](https://github.com/jthistle/KOTH-counting).
 
 A couple of example bots are provided along with it to demonstrate how to use it.
-
-`sandbox.py` provides a place to try out your bot against others and debug it.
 
 `arena.py` is what I'll be using to calculate final scores. It pits each bot against each other bot.
 
