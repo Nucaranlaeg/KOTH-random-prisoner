@@ -37,7 +37,7 @@ repeats = 100
 for k in range(repeats):
     N_GAMES = 100 + randint(-10, 10)
     for i in range(len(contestants)):
-        for j in range(i):
+        for j in range(i + 1):
             contestant = contestants[i]
             opponent = contestants[j]
             print(f"{game}/{int(len(contestants) * (len(contestants) + 1) * repeats / 2)}", end="\r")
