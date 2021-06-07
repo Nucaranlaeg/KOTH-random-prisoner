@@ -16,8 +16,8 @@ class Controller:
             print("\n".join(str(x) for x in grid))
         player_1_move = self.strategize[0](grid, self.player_objects[0])
         player_2_move = self.strategize[1](grid, self.player_objects[1])
-        self.points[0] += grid[player_2_move][player_1_move]
-        self.points[1] += grid[player_1_move][player_2_move]
+        self.points[0] += grid[player_1_move][player_2_move]
+        self.points[1] += grid[player_2_move][player_1_move]
         self.interpret[0](grid, (player_1_move, player_2_move), self.player_objects[0])
         self.interpret[1](grid, (player_2_move, player_1_move), self.player_objects[1])
 

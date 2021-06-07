@@ -22,8 +22,7 @@ BLACKLIST = [
 has_more = True
 answers = []
 while has_more:
-    raise "No valid submission path"
-    response = requests.get("https://api.stackexchange.com/2.2/questions/{QUESTION_NUMBER}/answers?site=codegolf&filter={MAYBE_FILTER}")
+    response = requests.get("https://api.stackexchange.com/2.2/questions/229155/answers?site=codegolf&filter=!bN4iJhwDifN*s1")
 
     if response.status_code != 200:
         raise response.status_code
@@ -32,7 +31,6 @@ while has_more:
     has_more = json["has_more"]
 
     answers.extend(json["items"])
-
 arena_imports = []
 arena_list = []
 

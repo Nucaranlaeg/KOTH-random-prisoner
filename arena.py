@@ -8,7 +8,16 @@ from example_contestants import naiive
 from example_contestants import random
 
 # Begin autogenerate
+from contestants import switcheroo
+from contestants import whatdoyouexpect
+from contestants import min_maxer
+from contestants import analyst
+
 contestants = [
+    ("Switcheroo", switcheroo.strategize, switcheroo.interpret),
+    ("WhatDoYouExpect", whatdoyouexpect.strategize, whatdoyouexpect.interpret),
+    ("Min-Maxer", min_maxer.strategize, min_maxer.interpret),
+    ("Analyst", analyst.strategize, analyst.interpret),
 ]
 # End autogenerate
 
@@ -24,11 +33,11 @@ wins = [0] * len(contestants)
 
 
 game = 0
-repeats = 10
+repeats = 100
 for k in range(repeats):
     N_GAMES = 100 + randint(-10, 10)
     for i in range(len(contestants)):
-        for j in range(i + 1):
+        for j in range(i):
             contestant = contestants[i]
             opponent = contestants[j]
             print(f"{game}/{int(len(contestants) * (len(contestants) + 1) * repeats / 2)}", end="\r")
