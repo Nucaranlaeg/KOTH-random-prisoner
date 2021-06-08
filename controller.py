@@ -1,17 +1,25 @@
 import random
 
+def generate_grid():
+    return [[random.randint(0, 10) for _ in range(3)] for _ in range(3)]
+
 class Controller:
-    def __init__(self, names, strategize, interpret):
+    def __init__(self, names, strategize, interpret, constant_grid = None):
         self.names = names
         self.strategize = strategize
         self.interpret = interpret
+        self.grid = constant_grid
 
         self.game_logs = [[], []]
         self.points = [0, 0]
         self.player_objects = ({}, {})
 
     def play_game(self, debug=False):
-        grid = [[random.randint(0, 10) for _ in range(3)] for _ in range(3)]
+        if self.grid:
+            grid = self.grid
+        else:
+            grid = generate_grid()
+
         if debug:
             print("\n".join(str(x) for x in grid))
         player_1_move = self.strategize[0](grid, self.player_objects[0])

@@ -17,6 +17,7 @@ for f in os.listdir("contestants"):
 
 
 BLACKLIST = [
+    229269,
 ]
 
 has_more = True

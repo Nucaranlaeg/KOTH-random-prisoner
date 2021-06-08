@@ -98,3 +98,5 @@ A couple of example bots are provided along with it to demonstrate how to use it
 `arena.py` is what I'll be using to calculate final scores. It pits each bot against each other bot.
 
 `update.py` will fetch all submitted bots from the contest page.
+
+Using the flag `--c` or `-constant` will cause games to be played without randomizing the grid between rounds, purely for interest's sake.

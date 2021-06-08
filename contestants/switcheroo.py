@@ -1,6 +1,9 @@
 # Author: user1502040
 # https://codegolf.stackexchange.com/a/229182
 
+# Author: user1502040
+# https://codegolf.stackexchange.com/a/229182
+
 import random
 
 def sample(distribution):
@@ -29,10 +32,6 @@ def nash(grid):
             strategy = [r * c for r in regrets]
     return strategy
 
-def cooperate(grid):
-    grid = [[grid[i][j] + grid[j][i] for j in range(3)] for i in range(3)]
-    return nash(grid)
-
 def expected(grid):
     values = [(sum(row), -sum(col)) for row, col in zip(grid, zip(*grid))]
     v_max = max(values)
@@ -42,21 +41,15 @@ def expected(grid):
 
 def strategize(grid, store):
     if not store:
-        store['outcomes'] = [[1. / 11 for _ in range(11)] for _ in range(3)]
+        store['outcomes'] = [[1. / 11 for _ in range(11)] for _ in range(2)]
         store['round_number'] = 0
         store['is_me'] = True
         store['side'] = 0
     scores = [max(sum(i * n for i, n in enumerate(a)) / sum(a) for a in (a0, [random.gammavariate(n, 1) for n in a0])) for a0 in store['outcomes']]
-    if store['round_number'] < 10:
-        strategy = 0
-    else:
-        if store['round_number'] >= 85:
-            scores[0] = float('-inf')
-        strategy = scores.index(max(scores))
+    strategy = scores.index(max(scores))
     nash_strategy = nash(grid)
-    cooperate_strategy = cooperate(grid)
     expected_strategy = expected(grid)
-    store['strategies'] = [cooperate_strategy, nash_strategy, expected_strategy]
+    store['strategies'] = [nash_strategy, expected_strategy]
     if store['is_me']:
         l, r = max(((i, j) for i in range(3) for j in range(i + 1)), key=lambda t: grid[t[0]][t[1]] + grid[t[1]][t[0]])
         store['sides'] = (l, r)
